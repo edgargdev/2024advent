@@ -1,9 +1,8 @@
-name: Hello World Workflow
+name: Nightly Hello World Workflow
 
 on: 
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: "0 5 * * *" # Runs at 11:00 PM Chicago time (adjusted to UTC)
 
 jobs:
   echo-hello-world:
