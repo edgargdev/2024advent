@@ -1,4 +1,6 @@
 defmodule DayOne do
+  use Application
+
   def part_one do
     prepare_input()
     |> Enum.zip()
@@ -29,5 +31,15 @@ defmodule DayOne do
 
   defp parse_ints(list) do
     list |> Enum.map(&String.to_integer/1) |> Enum.sort()
+  end
+
+  def main do
+    IO.puts("Part one: #{part_one()}")
+    IO.puts("Part two: #{part_two()}")
+  end
+
+  def start(_type, _args) do
+    main()
+    Supervisor.start_link([], strategy: :one_for_one)
   end
 end

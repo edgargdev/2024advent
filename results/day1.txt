@@ -1,0 +1,11 @@
+edgargdev:
+            Mean        Std.Dev.    Min         Median      Max
+real        0.363       0.064       0.315       0.336       0.738
+
+davsucks:
+            Mean        Std.Dev.    Min         Median      Max
+real        0.425       0.044       0.392       0.414       0.723
+
+codemartian:
+            Mean        Std.Dev.    Min         Median      Max
+real        0.026       0.002       0.021       0.027       0.028
