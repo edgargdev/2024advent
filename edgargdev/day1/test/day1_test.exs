@@ -4,12 +4,16 @@ defmodule Day1Test do
 
   test "generates two lists from file input" do
     file_contents = "46669   36559\n54117   62675\n25659   15179\n18867   82784"
-    assert Day1.generate_lists(file_contents) == {["46669", "54117", "25659", "18867"],["36559", "62675", "15179", "82784"]}
+
+    assert Day1.generate_lists(file_contents) ==
+             {["46669", "54117", "25659", "18867"], ["36559", "62675", "15179", "82784"]}
   end
 
   test "converts both lists from strings to ints" do
-    lists = {["46669", "54117", "25659", "18867"],["36559", "62675", "15179", "82784"]}
-    assert Day1.convert_to_ints(lists) == {[46669, 54117, 25659, 18867], [36559, 62675, 15179, 82784]}
+    lists = {["46669", "54117", "25659", "18867"], ["36559", "62675", "15179", "82784"]}
+
+    assert Day1.convert_to_ints(lists) ==
+             {[46669, 54117, 25659, 18867], [36559, 62675, 15179, 82784]}
   end
 
   test "orders lists from smallest to largest" do
@@ -18,12 +22,27 @@ defmodule Day1Test do
   end
 
   test "finds the sum of the differences between the two lists" do
-    lists = {[1,2,3], [2,3,4]}
+    lists = {[1, 2, 3], [2, 3, 4]}
     assert Day1.find_sum_of_differences(lists) == 3
   end
 
   test "ensure difference is absolute value" do
-    lists = {[1,2,3], [3,2,1]}
+    lists = {[1, 2, 3], [3, 2, 1]}
     assert Day1.find_sum_of_differences(lists) == 4
+  end
+
+  test "finds the number of occurences for each number in second list" do
+    lists = {[1, 2, 3], [2, 2, 3, 1]}
+    assert Day1.build_occurences_map(lists) == {[1, 2, 3], %{1 => 1, 2 => 2, 3 => 1}}
+  end
+
+  test "finds the number of occurences for each number in second list different list" do
+    lists = {[1, 2, 3], [2, 2, 3, 1, 2, 2, 3]}
+    assert Day1.build_occurences_map(lists) == {[1, 2, 3], %{1 => 1, 2 => 4, 3 => 2}}
+  end
+
+  test "add each element in first list with it's occurence in second list" do
+    lists = {[1, 2, 3], %{1 => 1, 2 => 4, 3 => 2}}
+    assert Day1.calculate_similarity_score(lists) == 15
   end
 end
